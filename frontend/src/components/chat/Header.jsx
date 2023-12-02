@@ -14,6 +14,7 @@ const HeaderFlexBox = styled(Box)`
         height: 60px;
         border-radius: 50px;
         padding: 10px 10px 10px 10px;
+        cursor: pointer;
     }
 
     & > p{
