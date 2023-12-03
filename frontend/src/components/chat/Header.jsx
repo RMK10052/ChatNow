@@ -18,7 +18,10 @@ const HeaderFlexBox = styled(Box)`
     }
 
     & > p{
-        padding: 25px 0px 10px 100px; 
+        padding-top: 25px;
+        padding-bottom: 10px;
+        margin-left: auto;
+        padding-right: 50px;
         font-weight: 1000;
     }
 `
