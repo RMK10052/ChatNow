@@ -4,7 +4,7 @@ export const AccountContext = createContext(null);  //This is the context, and t
 
 const AccountProvider = ({children}) => {
     const [account,setAccount] = useState();
-
+    
     return (
         <AccountContext.Provider value={{  /**The value of the context can be exported */
             account,
@@ -13,7 +13,6 @@ const AccountProvider = ({children}) => {
             {children}
         </AccountContext.Provider>
     )
-}
+};
 
 export default AccountProvider;
-

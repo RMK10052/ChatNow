@@ -49,7 +49,6 @@ const LoginDialogue = () => {
 
     const onLoginSuccesss = (res) => {
         let decodedCredential = jwtDecode(res.credential)
-        console.log(decodedCredential)
         setAccount(decodedCredential);
     }
 

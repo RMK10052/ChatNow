@@ -9,6 +9,7 @@ const DialogStyle = {
     maxHeight: '100%',
     width: '100%',
     maxWidth: '100%',
+    position: 'relative',
 }
 
 const MainDialogBox = styled(Box)`

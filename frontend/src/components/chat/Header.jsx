@@ -4,6 +4,9 @@ import { Box, Typography, styled } from "@mui/material";
 import { useContext } from "react";
 import { AccountContext } from "../../context/AccountProvider";
 
+//components
+import ProfilePicDialog from "./ProfilePicDialog";
+
 const HeaderBox = styled(Box)`
     background-color: #ededed;
 `
@@ -33,7 +36,8 @@ const Header = () => {
     return (
         <HeaderBox>
             <HeaderFlexBox>
-                <img src={account.picture} alt="profile-pic"/>
+                
+                <ProfilePicDialog/>
                 <Typography>{account.name}</Typography>
             </HeaderFlexBox>
                 

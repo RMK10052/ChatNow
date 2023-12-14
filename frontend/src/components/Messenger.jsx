@@ -15,7 +15,7 @@ const NewBox = styled(Box)`
     background: #dadada;
 `;
 
-const Header = styled(AppBar)`
+const HeaderStyle = styled(AppBar)`
     background-color: #00ccff;
     height: 250px;
 `;
@@ -28,20 +28,20 @@ const Messenger = () => {
         <NewBox>
             {
                 account?<>
-                    <Header>
+                    <HeaderStyle>
                         <Toolbar>
 
                         </Toolbar>
-                    </Header>
+                    </HeaderStyle>
                     <ChatDialog/>
                 
                 </>:
                 <>
-                    <Header>
+                    <HeaderStyle>
                         <Toolbar>
 
                         </Toolbar>
-                    </Header>
+                    </HeaderStyle>
                     <LoginDialog/>
                 </>
             }
