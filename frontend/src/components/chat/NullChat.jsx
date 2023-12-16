@@ -10,13 +10,11 @@ const ImageBox = styled(Box)`
     text-align: center;
 `
 
-const Container = styled(Box)`
-    padding: 0 200px;
-`
 
 const Image = styled('img')({
-    width: 400,
-    color: 'red',
+    width: '100%',
+    height: '100%',
+    maxHeight: '100%',
 })
 
 const NullChat = () => {

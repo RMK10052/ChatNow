@@ -14,6 +14,7 @@ const DialogStyle = {
 
 const MainDialogBox = styled(Box)`
     display: flex;
+    height: 95%;
 `
 
 const LeftDialogBox = styled(Box)`
@@ -21,7 +22,9 @@ const LeftDialogBox = styled(Box)`
 `
 
 const RightDialogBox = styled(Box)`
-    
+    flex-grow: 1;
+    height: 100%;
+    max-height: 100%;
 `
 
 
