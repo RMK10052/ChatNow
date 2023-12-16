@@ -12,6 +12,9 @@ import { jwtDecode } from "jwt-decode";
 import { useContext } from "react";
 import { AccountContext } from "../../context/AccountProvider";
 
+//api
+import { addUser } from "../../service/api";
+
 const DialogStyle = {
     height: '80%',
     maxHeight: '100%',
@@ -50,10 +53,11 @@ const LoginDialogue = () => {
     const onLoginSuccesss = (res) => {
         let decodedCredential = jwtDecode(res.credential)
         setAccount(decodedCredential);
+        addUser(decodedCredential);
     }
 
     const onLoginError = (res) => {
-        console.log('Error occured',res)
+        console.log('Error occured during login',res)
     }
 
     return (
@@ -72,7 +76,7 @@ const LoginDialogue = () => {
                     </Typography>
                     <List>
                         <ListItem>
-                            1. Click on the link given
+                            1. Click on the link 
                         </ListItem>
                         <ListItem>
                             2. Sign in with your Google Account

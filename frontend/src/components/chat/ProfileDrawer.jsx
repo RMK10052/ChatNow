@@ -135,7 +135,7 @@ const ProfileDrawer = ({ open, setOpen }) => {
             </ProfileDrawerHeader>
 
             <ProfilePictureBox>
-                <img src={account.picture} onClick={handleClick}></img>
+                <img src={account.picture} onClick={handleClick} alt="DP"></img>
             </ProfilePictureBox>
 
             <Dialog
