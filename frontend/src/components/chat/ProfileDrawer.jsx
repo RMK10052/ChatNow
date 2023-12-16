@@ -140,7 +140,7 @@ const ProfileDrawer = ({ open, setOpen }) => {
 
             <Dialog
                 open={openPic}
-                onClose={handleClose}
+                onClose={handlePicClose}
                 /**No backdrop */
                 PaperProps={{sx: DialogStyle}}
             >
