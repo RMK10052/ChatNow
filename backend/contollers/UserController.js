@@ -12,9 +12,18 @@ export const addUser = async (request,response) => {
         //else
         const newUser = new User(request.body);
         await newUser.save();
-        return response.status(200).json(newUser);
+        response.status(200).json(newUser);
 
     } catch (error) {
-        return response.status(500).json(error.message);
+        response.status(500).json(error.message);
+    }
+}
+
+export const getUsers = async (request, response) => {
+    try {
+        const users = await User.find({});
+        response.status(200).json(users);
+    } catch (error) {
+        response.status(500).json(error.message);
     }
 }

@@ -51,4 +51,4 @@ const ChatDialog = () => {
     )
 }
 
-export default ChatDialog
+export default ChatDialog;
