@@ -1,4 +1,7 @@
-import {Box, Typography} from '@mui/material';
+import {Box, styled} from '@mui/material';
+import Divider from '@mui/material/Divider';
+
+//context, state
 import { useState, useEffect, useContext } from "react";
 
 //controllers
@@ -9,6 +12,11 @@ import Conversation from './Conversation';
 
 //context
 import { AccountContext } from "../../context/AccountProvider";
+
+const ConversationsBox = styled(Box)`
+    height: 80vh;
+    overflow: overalay;
+`
 
 const Conversations = () => {
 
@@ -26,14 +34,17 @@ const Conversations = () => {
     const {account} = useContext(AccountContext);
 
     return (
-        <Box>
+        <ConversationsBox>
             {
                 users.map(user => (
                     account.sub !== user.sub && 
-                    <Conversation user = {user}/>
+                    <>
+                        <Conversation user = {user}/>
+                        <Divider variant='middle'/>
+                    </>
                 ))
             }
-        </Box>
+        </ConversationsBox>
     )
 }
 

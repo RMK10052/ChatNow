@@ -1,18 +1,35 @@
+import { Box, styled } from "@mui/material";
 
+const ConversationBox = styled(Box)`
+  display: flex;
+  align-items: center; 
+  height: 35px;
+  padding: 15px 10px; 
+  cursor: pointer;
+`;
 
-import { Box } from "@mui/material";
+const ImageBox = styled(Box)`
+  & > img {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+  }
+`;
 
-const Conversation = ({user}) => {
-    return (
-        <Box>
-            <Box>
-                <img src={user.picture} alt="dp" />
-            </Box>
-            <Box>
-                {user.name}
-            </Box>
-        </Box>
-    )
-}
+const NameBox = styled(Box)`
+  margin-left: 50px;
+`;
+
+const Conversation = ({ user }) => {
+  return (
+    <ConversationBox>
+      <ImageBox>
+        <img src={user.picture} alt="dp" />
+      </ImageBox>
+      <NameBox>{user.name}</NameBox>
+    </ConversationBox>
+  );
+};
 
 export default Conversation;
