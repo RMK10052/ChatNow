@@ -2,7 +2,7 @@ import { Box, Typography, styled } from "@mui/material";
 
 //contexts
 import { useContext } from "react";
-import { AccountContext } from "../../context/AccountProvider";
+import { AccountContext } from "../../../context/AccountProvider";
 
 //components
 import ProfilePicDialog from "./ProfilePicDialog";
@@ -13,15 +13,16 @@ const HeaderBox = styled(Box)`
 
 const HeaderFlexBox = styled(Box)`
     display: flex;
+    height: 60px;
     & > img{
-        height: 60px;
+        height: 40px;
         border-radius: 50px;
         padding: 10px 10px 10px 10px;
         cursor: pointer;
     }
 
     & > p{
-        padding-top: 25px;
+        padding-top: 20px;
         padding-bottom: 10px;
         margin-left: auto;
         padding-right: 50px;

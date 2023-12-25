@@ -2,7 +2,7 @@
 import { Box, styled } from "@mui/material";
 
 //constants
-import { emptyChatImage } from "../../constants/data";
+import { emptyChatImage } from "../../../constants/data";
 
 
 const ImageBox = styled(Box)`

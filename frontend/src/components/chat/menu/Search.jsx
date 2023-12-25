@@ -16,6 +16,7 @@ const MainFlexBox = styled(Box)`
     border-radius: 10px;
     background: #ededed;
     margin: 0px 15px;
+    height: 40px;
 `
 
 const SearchBox = styled(InputBase)`

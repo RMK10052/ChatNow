@@ -5,7 +5,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 //context
 import { useContext, useState } from "react";
-import { AccountContext } from "../../context/AccountProvider";
+import { AccountContext } from "../../../context/AccountProvider";
 
 const DialogStyle = {
     maxHeight: '100%',
@@ -36,7 +36,7 @@ const CloseIconStyle = {
 const ProfileDrawerHeader = styled(Box)`
     display: flex;
     background-color: #ededed; 
-    padding-top: 26.5px; 
+    padding-top: 10px; 
     padding-bottom: 10px;
 
     & > p{
@@ -45,7 +45,8 @@ const ProfileDrawerHeader = styled(Box)`
 `
 
 const ProfilePictureBox = styled(Box)  `
-    padding: 50px 0;
+    padding-top: 10px;
+    padding-bottom: 40px;
     text-align: center;
     justify-content: center;
     display: flex;

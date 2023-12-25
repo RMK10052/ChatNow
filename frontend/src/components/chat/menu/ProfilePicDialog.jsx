@@ -3,7 +3,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 //contexts
 import { useState, useContext } from "react";
-import { AccountContext } from "../../context/AccountProvider";
+import { AccountContext } from "../../../context/AccountProvider";
 
 const DialogStyle = {
     maxHeight: '100%',

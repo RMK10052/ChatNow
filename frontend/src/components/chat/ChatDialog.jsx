@@ -1,8 +1,9 @@
 import { Dialog, Box, styled } from "@mui/material"
 
 //components
-import Menu from "./Menu"
-import NullChat from "./NullChat"
+import Menu from "./menu/Menu"
+import NullChat from "./chat/NullChat"
+import ChatBox from "./chat/ChatBox"
 
 const DialogStyle = {
     height: '95%',
@@ -42,7 +43,9 @@ const ChatDialog = () => {
                 </LeftDialogBox>
 
                 <RightDialogBox>
-                    <NullChat/>
+                    {/* <NullChat/> */}
+                    <ChatBox/>
+                    
                 </RightDialogBox>
                 
             </MainDialogBox>

@@ -21,6 +21,7 @@ const NameBox = styled(Box)`
   margin-left: 50px;
 `;
 
+
 const Conversation = ({ user }) => {
   return (
     <ConversationBox>

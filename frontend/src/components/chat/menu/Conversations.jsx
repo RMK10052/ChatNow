@@ -5,17 +5,17 @@ import Divider from '@mui/material/Divider';
 import { useState, useEffect, useContext } from "react";
 
 //controllers
-import { getUsers } from "../../service/api";
+import { getUsers } from "../../../service/api";
 
 //components
 import Conversation from './Conversation';
 
 //context
-import { AccountContext } from "../../context/AccountProvider";
+import { AccountContext } from "../../../context/AccountProvider";
 
 const ConversationsBox = styled(Box)`
-    height: 80vh;
-    overflow: overalay;
+    height: 70vh;
+    overflow: overlay;
 `
 
 const Conversations = () => {
