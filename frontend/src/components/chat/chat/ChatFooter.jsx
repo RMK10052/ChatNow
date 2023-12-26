@@ -1,9 +1,8 @@
 
-import { Box, styled, InputBase, Input } from "@mui/material"
-import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+import { Box, styled, InputBase } from "@mui/material"
+import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import SendIcon from '@mui/icons-material/Send';
-import Send from "@mui/icons-material/Send";
 
 const Container = styled(Box)`
     height: 50px;
@@ -13,7 +12,7 @@ const Container = styled(Box)`
     align-items: center;
 `
 
-const Emoji = styled(EmojiEmotionsIcon)`
+const Emoji = styled(SentimentVerySatisfiedIcon)`
     padding-left: 10px;
     cursor: pointer;
 `

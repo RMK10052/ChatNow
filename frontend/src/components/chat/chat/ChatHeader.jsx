@@ -13,6 +13,7 @@ const HeaderFlexBox = styled(Box)`
     display: flex;
     height: 60px;
     background-color: #ededed;
+    min-width: 400px;
 
     & > img{
         height: 40px;
@@ -45,17 +46,17 @@ const RightContainer = styled(Box)`
 
 const ChatHeader = () => {
 
-    const {account} = useContext(AccountContext);
+    const {chatUser} = useContext(AccountContext);
     return (
         <HeaderFlexBox>
 
-            <img src={account.picture} alt="user-dp" /> {/**To change it later to the other users dp */}
+            <img src={chatUser.picture} alt="user-dp" /> {/**To change it later to the other users dp */}
 
             <Box sx={{
                 paddingTop: '10px'
             }}>
 
-                <NameStyle>User's name</NameStyle>
+                <NameStyle>{chatUser.name}</NameStyle>
                 <StatusStyle>Online status</StatusStyle>
 
             </Box>

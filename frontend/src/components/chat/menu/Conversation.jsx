@@ -1,5 +1,12 @@
 import { Box, styled } from "@mui/material";
 
+//contexts
+import {AccountContext} from "../../../context/AccountProvider"
+import { useContext } from "react";
+
+//api
+import { setConversation } from "../../../service/api";
+
 const ConversationBox = styled(Box)`
   display: flex;
   align-items: center; 
@@ -23,8 +30,16 @@ const NameBox = styled(Box)`
 
 
 const Conversation = ({ user }) => {
+
+  const {account, setChatUser} = useContext(AccountContext);
+
+  const getUser = async () => {
+    setChatUser(user);
+    await setConversation({ senderId: account.sub, receiverId: user.sub });
+}
+
   return (
-    <ConversationBox>
+    <ConversationBox onClick={() => getUser()}>
       <ImageBox>
         <img src={user.picture} alt="dp" />
       </ImageBox>

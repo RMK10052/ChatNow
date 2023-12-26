@@ -39,7 +39,7 @@ const MenuBox = styled(Box)`
     border-radius: 10px;
 `
 
-const Search = () => {
+const Search = ({setText}) => {
     return (
         <OuterFlexBox>
 
@@ -49,7 +49,10 @@ const Search = () => {
                     <SearchIcon/>
                 </SearchIconBox>
 
-                <SearchBox placeholder='Search contacts'/>
+                <SearchBox
+                    placeholder='Search contacts'
+                    onChange = {(e) => setText(e.target.value)}
+                />
 
             </MainFlexBox>
 

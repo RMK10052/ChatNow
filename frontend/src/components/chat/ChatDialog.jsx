@@ -5,6 +5,10 @@ import Menu from "./menu/Menu"
 import NullChat from "./chat/NullChat"
 import ChatBox from "./chat/ChatBox"
 
+//contexts
+import { AccountContext } from "../../context/AccountProvider"
+import { useContext } from "react"
+
 const DialogStyle = {
     height: '95%',
     maxHeight: '100%',
@@ -30,6 +34,9 @@ const RightDialogBox = styled(Box)`
 
 
 const ChatDialog = () => {
+
+    const {chatUser} = useContext(AccountContext);
+
     return(
         <Dialog
              open={true} 
@@ -43,8 +50,7 @@ const ChatDialog = () => {
                 </LeftDialogBox>
 
                 <RightDialogBox>
-                    {/* <NullChat/> */}
-                    <ChatBox/>
+                    {Object.keys(chatUser).length ? <ChatBox/> : <NullChat/>}
                     
                 </RightDialogBox>
                 

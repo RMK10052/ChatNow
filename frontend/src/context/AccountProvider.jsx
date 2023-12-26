@@ -4,11 +4,15 @@ export const AccountContext = createContext(null);  //This is the context, and t
 
 const AccountProvider = ({children}) => {
     const [account,setAccount] = useState();
+    const [chatUser,setChatUser] = useState({});
+    console.log(chatUser);
     
     return (
         <AccountContext.Provider value={{  /**The value of the context can be exported */
             account,
-            setAccount
+            setAccount,
+            chatUser,
+            setChatUser,
         }}>   
             {children}
         </AccountContext.Provider>
