@@ -4,6 +4,8 @@ import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfi
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import SendIcon from '@mui/icons-material/Send';
 
+import { useState } from "react";
+
 const Container = styled(Box)`
     height: 50px;
     background: #ededed;
@@ -44,7 +46,8 @@ const SendComponent = styled(SendIcon)`
     cursor: pointer;
 `
 
-const ChatFooter = () => {
+const ChatFooter = ({sendText, chatText, setChatText}) => {
+
     return (
         <Container>
             <Emoji/>
@@ -52,7 +55,9 @@ const ChatFooter = () => {
             <TypeBar>
                 <InputField
                     placeholder="Type a message"
-                    inputProps={{ 'aria-label': 'search' }}
+                    onChange={(e) => setChatText(e.target.value)}
+                    onKeyPress={(e) => sendText(e)}
+                    value={chatText}
                 />
             </TypeBar>
             <SendComponent/>
