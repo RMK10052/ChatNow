@@ -21,6 +21,10 @@ const MessagesBox = styled(Box)`
     overflow-y: scroll;
 `
 
+const Container = styled(Box)`
+    padding: 5px 20px;
+`
+
 const Messages = ({conversation}) => {
 
     const {account, chatUser} = useContext(AccountContext);
@@ -29,13 +33,15 @@ const Messages = ({conversation}) => {
 
     const [messages, setMessages] = useState([]);
 
+    const [newMessageFlag, setNewMessageFlag] = useState(false);
+
     useEffect(() => {
         const fetchMessages = async () => {
             let data = await getMessages(conversation._id);
             setMessages(data);
         };
         conversation._id && fetchMessages();
-    }, [conversation._id, chatUser._id]);
+    }, [conversation._id, chatUser._id, newMessageFlag]);
 
     const sendText = async (e) => {
         const code = e.keyCode || e.which;
@@ -52,6 +58,7 @@ const Messages = ({conversation}) => {
             await newMessage(message);
 
             setChatText('');
+            setNewMessageFlag(val => !val);
         }
 
     }
@@ -62,7 +69,9 @@ const Messages = ({conversation}) => {
                 <MessagesBox>
                     {
                         messages && messages.map(message => (
-                            <Message message={message} />
+                            <Container>
+                                <Message message={message} />
+                            </Container>
                     ))
                     }
                 </MessagesBox>
