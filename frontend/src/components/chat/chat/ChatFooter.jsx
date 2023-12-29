@@ -49,20 +49,21 @@ const SendComponent = styled(SendIcon)`
     cursor: pointer;
 `
 
-const ChatFooter = ({sendText, chatText, setChatText, handleSendClick, file, setFile}) => {
+const ChatFooter = ({sendText, chatText, setChatText, handleSendClick, file, setFile, setFileUrl}) => {
 
     useEffect(() => {
-        const getImage = async () => {
+        const getFile = async () => {
             if(file){
-                const data = new FormData();
-                data.append("name",file.name);
-                data.append("file",file);
+                const data = new FormData(); // to easily form key-value pairs
+                data.append("name", file.name);
+                data.append("file", file);
 
-                await uploadFile(data);
-            }
+                const response = await uploadFile(data);  //fileUrl
+                setFileUrl(response);
+            }   
         }
 
-        getImage();
+        getFile();
     }, [file])
 
     const onFileChange = (e) => {

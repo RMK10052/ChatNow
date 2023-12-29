@@ -37,6 +37,8 @@ const Messages = ({conversation}) => {
 
     const [file, setFile] = useState();
 
+    const [fileUrl, setFileUrl] = useState('');
+
     useEffect(() => {
         const fetchMessages = async () => {
             let data = await getMessages(conversation._id);
@@ -46,25 +48,38 @@ const Messages = ({conversation}) => {
     }, [conversation._id, chatUser._id, newMessageFlag]);
 
     const handleSendClick = async () => {
-        let message = {
-            senderId: account.sub,
-            receiverId: chatUser.sub,
-            conversationId: conversation._id,
-            type: 'text',
-            text: chatText,
+        let message = {};
+        if(!file){
+            message = {
+                senderId: account.sub,
+                receiverId: chatUser.sub,
+                conversationId: conversation._id,
+                type: 'text',
+                text: chatText,
+            };
+        }else{
+            message = {
+                senderId: account.sub,
+                receiverId: chatUser.sub,
+                conversationId: conversation._id,
+                type: 'file',
+                text: fileUrl,
+            };
         }
+        
 
-        if(chatText){
-            await newMessage(message);
+        await newMessage(message);
 
-            setChatText('');
-            setNewMessageFlag(val => !val);
-        }
+        setChatText('');
+        setFile();
+        setFileUrl('');
+        setNewMessageFlag(val => !val);
     }
 
     const sendText = async (e) => {
         const code = e.keyCode || e.which;
 
+        if(!chatText)return;
         if(code === 13){  //Enter button
             handleSendClick();
         }
@@ -90,6 +105,7 @@ const Messages = ({conversation}) => {
                 setChatText={setChatText}
                 file = {file}
                 setFile = {setFile}
+                setFileUrl = {setFileUrl}
                 handleSendClick = {handleSendClick}
             />
         </>

@@ -4,7 +4,7 @@ import express from "express";
 import { addUser, getUsers } from "../contollers/UserController.js";
 import { setConversation, getConversation } from "../contollers/ConversationController.js";
 import { newMessage, getMessages } from "../contollers/MessageController.js";
-import { uploadFile } from "../contollers/FileController.js";
+import { uploadFile, getFile } from "../contollers/FileController.js";
 
 //utils
 import upload from "../utils/upload.js";
@@ -25,4 +25,7 @@ route.post('/message/add',newMessage);
 route.get('/message/get/:id',getMessages);
 
 route.post('/file/upload', upload.single('file'), uploadFile);
+//The string name in single should match with the string in the ChatFooter data.append(string,file)
+
+route.get('/file/:filename', getFile);
 export default route;
