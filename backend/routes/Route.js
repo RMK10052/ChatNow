@@ -4,6 +4,10 @@ import express from "express";
 import { addUser, getUsers } from "../contollers/UserController.js";
 import { setConversation, getConversation } from "../contollers/ConversationController.js";
 import { newMessage, getMessages } from "../contollers/MessageController.js";
+import { uploadFile } from "../contollers/FileController.js";
+
+//utils
+import upload from "../utils/upload.js";
 
 const route = express.Router();
 
@@ -20,4 +24,5 @@ route.post('/conversation/get', getConversation);
 route.post('/message/add',newMessage);
 route.get('/message/get/:id',getMessages);
 
+route.post('/file/upload', upload.single('file'), uploadFile);
 export default route;

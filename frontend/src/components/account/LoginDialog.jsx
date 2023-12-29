@@ -30,6 +30,7 @@ const MainDialogBox = styled(Box)`
 
 const LeftDialogBox = styled(Box)`
     padding: 56px 0px 56px 56px;
+    min-width: 10px;
 `
 
 const RightDialogBox = styled(Box)`

@@ -35,6 +35,8 @@ const Messages = ({conversation}) => {
 
     const [newMessageFlag, setNewMessageFlag] = useState(false);
 
+    const [file, setFile] = useState();
+
     useEffect(() => {
         const fetchMessages = async () => {
             let data = await getMessages(conversation._id);
@@ -43,22 +45,28 @@ const Messages = ({conversation}) => {
         conversation._id && fetchMessages();
     }, [conversation._id, chatUser._id, newMessageFlag]);
 
-    const sendText = async (e) => {
-        const code = e.keyCode || e.which;
+    const handleSendClick = async () => {
+        let message = {
+            senderId: account.sub,
+            receiverId: chatUser.sub,
+            conversationId: conversation._id,
+            type: 'text',
+            text: chatText,
+        }
 
-        if(code === 13){  //Enter button
-            let message = {
-                senderId: account.sub,
-                receiverId: chatUser.sub,
-                conversationId: conversation._id,
-                type: 'text',
-                text: chatText,
-            }
-
+        if(chatText){
             await newMessage(message);
 
             setChatText('');
             setNewMessageFlag(val => !val);
+        }
+    }
+
+    const sendText = async (e) => {
+        const code = e.keyCode || e.which;
+
+        if(code === 13){  //Enter button
+            handleSendClick();
         }
 
     }
@@ -76,7 +84,14 @@ const Messages = ({conversation}) => {
                     }
                 </MessagesBox>
             </MessagesWrapper>
-            <ChatFooter sendText={sendText} chatText={chatText} setChatText={setChatText}/>
+            <ChatFooter
+                sendText={sendText} 
+                chatText={chatText} 
+                setChatText={setChatText}
+                file = {file}
+                setFile = {setFile}
+                handleSendClick = {handleSendClick}
+            />
         </>
     )
 }

@@ -4,7 +4,10 @@ import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfi
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import SendIcon from '@mui/icons-material/Send';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+//api
+import { uploadFile } from "../../../service/api";
 
 const Container = styled(Box)`
     height: 50px;
@@ -46,12 +49,39 @@ const SendComponent = styled(SendIcon)`
     cursor: pointer;
 `
 
-const ChatFooter = ({sendText, chatText, setChatText}) => {
+const ChatFooter = ({sendText, chatText, setChatText, handleSendClick, file, setFile}) => {
+
+    useEffect(() => {
+        const getImage = async () => {
+            if(file){
+                const data = new FormData();
+                data.append("name",file.name);
+                data.append("file",file);
+
+                await uploadFile(data);
+            }
+        }
+
+        getImage();
+    }, [file])
+
+    const onFileChange = (e) => {
+        setFile(e.target.files[0]);
+        setChatText(e.target.files[0].name);
+    }
 
     return (
         <Container>
             <Emoji/>
-            <ClipIcon/>
+            <label htmlFor="fileInput">
+                <ClipIcon/>
+            </label>
+            <input 
+                type="file" 
+                id="fileInput"    
+                style={{display:"none"}}
+                onChange={(e) => onFileChange(e)}
+            />
             <TypeBar>
                 <InputField
                     placeholder="Type a message"
@@ -60,7 +90,7 @@ const ChatFooter = ({sendText, chatText, setChatText}) => {
                     value={chatText}
                 />
             </TypeBar>
-            <SendComponent/>
+            <SendComponent onClick={() => {handleSendClick()}}/>
         </Container>
     )
 };
