@@ -46,7 +46,7 @@ const RightContainer = styled(Box)`
 
 const ChatHeader = () => {
 
-    const {chatUser} = useContext(AccountContext);
+    const {chatUser, onlineUsers} = useContext(AccountContext);
     return (
         <HeaderFlexBox>
 
@@ -57,7 +57,7 @@ const ChatHeader = () => {
             }}>
 
                 <NameStyle>{chatUser.name}</NameStyle>
-                <StatusStyle>Online status</StatusStyle>
+                <StatusStyle>{onlineUsers.find(user => user.sub === chatUser.sub) ? 'Online' : 'Offline'}</StatusStyle>
 
             </Box>
 

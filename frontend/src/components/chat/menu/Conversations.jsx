@@ -21,7 +21,6 @@ const ConversationsBox = styled(Box)`
 const Conversations = ({text}) => {
 
     const [users,setUsers] = useState([]);
-    // console.log(users);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,7 +31,14 @@ const Conversations = ({text}) => {
         fetchData();
     }, [text]);
 
-    const {account} = useContext(AccountContext);
+    const {account, socket, setOnlineUsers} = useContext(AccountContext);
+
+    useEffect(() => {
+        socket.current.emit('addUsers', account);
+        socket.current.on("getUsers", users => {
+            setOnlineUsers(users);
+        });
+    }, [account])
 
     return (
         <ConversationsBox>

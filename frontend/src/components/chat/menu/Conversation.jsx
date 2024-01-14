@@ -1,11 +1,14 @@
-import { Box, styled } from "@mui/material";
+import { Box, Typography, styled } from "@mui/material";
 
 //contexts
 import {AccountContext} from "../../../context/AccountProvider"
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 //api
-import { setConversation } from "../../../service/api";
+import { getConversation, setConversation } from "../../../service/api";
+
+//utils
+import { formatDate } from "../../../utils/utils";
 
 const ConversationBox = styled(Box)`
   display: flex;
@@ -24,14 +27,37 @@ const ImageBox = styled(Box)`
   }
 `;
 
-const NameBox = styled(Box)`
-  margin-left: 50px;
+const Container = styled(Box)`
+    display: flex;
+`;
+
+const Timestamp = styled(Typography)`
+    font-size: 12px;
+    margin-left: auto;
+    color: #00000099;
+    margin-right: 20px;
+`;
+
+const Text = styled(Typography)`
+    display: block;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
 `;
 
 
 const Conversation = ({ user }) => {
 
-  const {account, setChatUser} = useContext(AccountContext);
+  const {account, setChatUser, newMessageFlag} = useContext(AccountContext);
+
+  const [message, setMessage] = useState({});
+
+  useEffect(() => {
+    const getConversationMessage = async() => {
+        const data = await getConversation({ senderId: account.sub, receiverId: user.sub });
+        setMessage({ text: data?.lastMessage, timestamp: data?.updatedAt });
+    }
+    getConversationMessage();
+}, [newMessageFlag]);
 
   const getUser = async () => {
     setChatUser(user);
@@ -43,7 +69,16 @@ const Conversation = ({ user }) => {
       <ImageBox>
         <img src={user.picture} alt="dp" />
       </ImageBox>
-      <NameBox>{user.name}</NameBox>
+      <Box style={{width: '100%'}}>
+        <Container>
+            <Typography>{user.name}</Typography>
+                {message?.text &&
+                <Timestamp>{formatDate(message?.timestamp)}</Timestamp>}       
+        </Container>
+        <Box>
+            <Text>{message?.text?.includes('localhost') ? 'media' : message.text}</Text>
+        </Box>
+    </Box>
     </ConversationBox>
   );
 };
